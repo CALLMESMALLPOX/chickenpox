@@ -133,6 +133,20 @@ def main():
         "since the list of choices will have to be requested any way.",
     )
 
+    ##### NGL Parser #####
+    ngl_parser = subparsers.add_parser(
+        "ngl",
+        help="spam an ngl sticker",
+        parents=[common_args],
+    )
+
+    ngl_parser.add_argument(
+        "username",
+        type=str,
+        help="the username of URL of the post to spam",
+    )
+    ngl_parser.add_argument("message", type=str, help="the message to spam")
+
     args = parser.parse_args()
 
     if args.proxy is None:
@@ -228,6 +242,31 @@ def main():
 
         else:
             send_args = [args.choice]
+
+    elif args.target_app == "ngl":
+        from .ngl import NGL
+
+        spammer = NGL(args.username, proxies)
+
+        def send():
+            r = spammer.post(args.message)
+            content = r.content
+
+            try:
+                result = json.loads(content)
+                if "questionId" not in result:
+                    raise Exception
+                print(f"Sent message. ({get_time()})")
+            except:
+                print("Message failed to send")
+
+            sleep(args.delay / 1000)
+
+        if args.msg_count == -1:
+
+            def thread():
+                while True:
+                    send()
 
     else:
         return

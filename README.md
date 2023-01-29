@@ -1,6 +1,6 @@
 # snapspam [![Docs Badge]](https://snapspam.readthedocs.io/en/stable/) [![Python Badge]](https://pypi.org/project/snapspam/)
 
-Spam sendit or LMK messages.
+Spam sendit, LMK, or NGL messages.
 
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/MysteryBlokHed/snapspam.git)
 
