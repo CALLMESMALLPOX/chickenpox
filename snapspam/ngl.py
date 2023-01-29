@@ -38,6 +38,7 @@ class NGL:
                 "referrer": "",
             },
             headers=self._headers,
+            proxies=self._proxies,
         )
 
     def _link_to_id(self, link: str) -> str:
