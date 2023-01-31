@@ -18,7 +18,7 @@ class Sendit:
     def __init__(self,
                  link_or_id: str,
                  message: str,
-                 delay: int = 0,
+                 delay: int = 45,
                  proxies: dict = {}):
         self._sendit_id = self._link_to_id(link_or_id)
         self._message = message
